@@ -1,0 +1,26 @@
+<div class="container container-lg">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Pokémon</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pokemon of pokemonList">
+      <td class="text-capitalize" (click)="openModal(pokemon)">
+        {{ pokemon.name }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <button class="btn btn-sm" (click)="previousPage()" *ngIf="offset !== 0">
+      <img src="/assets/arrow_left.svg" alt="" width="20" height="20">
+      Previous
+    </button>
+    <button class="btn btn-sm" (click)="nextPage()">
+      Next
+      <img src="/assets/arrow_right.svg" alt="" width="20" height="20">
+    </button>
+  </div>
+</div>

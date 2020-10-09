@@ -20,6 +20,6 @@ export class NavbarComponent implements OnInit {
   }
 
   onSelectLanguage($event: Event): void {
-
+    console.log($event);
   }
 }
