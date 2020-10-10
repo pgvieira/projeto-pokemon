@@ -15,4 +15,7 @@ export class PokemonsService {
     return this.http.get(`${this.url}?offset=${offset}&limit=${limit}`);
   }
 
+  getPokemon(url: string): Observable<any>{
+    return this.http.get(`${url}`);
+  }
 }

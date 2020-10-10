@@ -1,26 +1,32 @@
 <div class="container container-lg">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Pokémon</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let pokemon of pokemonList">
-      <td class="text-capitalize" (click)="openModal(pokemon)">
-        {{ pokemon.name }}
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="text-right">
-    <button class="btn btn-sm" (click)="previousPage()" *ngIf="offset !== 0">
-      <img src="/assets/arrow_left.svg" alt="" width="20" height="20">
-      Previous
-    </button>
-    <button class="btn btn-sm" (click)="nextPage()">
-      Next
-      <img src="/assets/arrow_right.svg" alt="" width="20" height="20">
-    </button>
+  <div class="margin">
+    <table class="table table-hover table-borderless">
+      <thead>
+        <tr>
+          <th scope="col"> # </th>
+          <th scope="col">Sprite</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pokemon of listPokemon">
+          <td > {{ pokemon.id }}</td>
+          <td >
+            <img src="{{ pokemon.urlImage }}" alt="" width="50" height="50">
+          </td>
+          <td class="text-capitalize" (click)="openModal(pokemon)">
+            {{ pokemon.name }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button class="btn btn-sm" (click)="previousPage()" *ngIf="offset !== 0">
+        <img src="/assets/arrow_left.svg" alt="" width="30" height="30">
+      </button>
+      <button class="btn btn-sm" (click)="nextPage()">
+        <img src="/assets/arrow_right.svg" alt="" width="30" height="30">
+      </button>
+    </div>
   </div>
 </div>
