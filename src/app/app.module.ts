@@ -8,13 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { ItemsComponent } from './components/items/items.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PokemonsComponent,
-    ItemsComponent
+    ItemsComponent,
+    PokemonDetailComponent
   ],
   imports: [
     BrowserModule,

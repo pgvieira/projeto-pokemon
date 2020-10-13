@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="input-group flex-nowrap">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="id">ID</span>
+          </div>
+          <input type="text" class="form-control" aria-label="id" disabled value="{{ pokemon.id }}">
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group flex-nowrap">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="name">Name</span>
+          </div>
+          <input type="text" class="form-control text-capitalize" aria-label="id" disabled value="{{ pokemon.name }}">
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group flex-nowrap">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="height">Height</span>
+          </div>
+          <input type="text" class="form-control text-capitalize" aria-label="id" disabled value="{{ pokemon.height }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-dark" (click)="activeModal.close('Close click')">Fechar</button>
+</div>

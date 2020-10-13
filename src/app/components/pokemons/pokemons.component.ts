@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PokemonsService} from '../../services/pokemons.service';
 import {Pokemon} from '../../interfaces/pokemon.interface';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PokemonDetailComponent} from '../pokemon-detail/pokemon-detail.component';
 
 @Component({
   selector: 'app-pokemons',
@@ -9,11 +11,12 @@ import {Pokemon} from '../../interfaces/pokemon.interface';
 })
 export class PokemonsComponent implements OnInit {
 
-  listPokemon = [];
+  listPokemon: Pokemon[] = [];
   offset = 0;
   limit = 6;
 
-  constructor(private pokemonsService: PokemonsService) { }
+  constructor(private pokemonsService: PokemonsService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getPokemonList(this.offset, this.limit);
@@ -32,19 +35,16 @@ export class PokemonsComponent implements OnInit {
   }
 
   openModal(pokemon: any): void {
-    console.log(pokemon);
+    const modalRef = this.modalService.open(PokemonDetailComponent, {size: 'xl'});
+    modalRef.componentInstance.pokemon = pokemon;
+    modalRef.componentInstance.width = 900;
   }
 
   getPokemonList(offset, limit): void {
     this.pokemonsService.getPokemonList(offset, limit).subscribe(async (result: any) => {
       for (const pokemonItem of result.results) {
-        await this.pokemonsService.getPokemon(pokemonItem.url).toPromise().then( (data: Pokemon) => {
-          const pokemonObject = {
-            id: data.id,
-            name: data.name,
-            urlImage: data.sprites.front_default
-          };
-          this.listPokemon.push(pokemonObject);
+        await this.pokemonsService.getPokemon(pokemonItem.url).toPromise().then((data: Pokemon) => {
+          this.listPokemon.push(data);
         });
       }
     });

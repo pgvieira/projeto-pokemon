@@ -9,12 +9,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pokemon of listPokemon">
+        <tr *ngFor="let pokemon of listPokemon" (click)="openModal(pokemon)">
           <td > {{ pokemon.id }}</td>
           <td >
-            <img src="{{ pokemon.urlImage }}" alt="" width="50" height="50">
+            <img src="{{ pokemon.sprites.front_default }}" alt="" width="50" height="50">
           </td>
-          <td class="text-capitalize" (click)="openModal(pokemon)">
+          <td class="text-capitalize">
             {{ pokemon.name }}
           </td>
         </tr>
